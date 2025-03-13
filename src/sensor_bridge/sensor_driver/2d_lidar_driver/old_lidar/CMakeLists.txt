@@ -1,5 +1,27 @@
 cmake_minimum_required(VERSION 3.22)
-project(2d_lidar_driver)
+project(old_lidar_driver)
+
+if(NOT CMAKE_C_STANDARD)
+  set(CMAKE_C_STANDARD 99)
+endif()
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 17)
+endif()
+
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+set(CMAKE_EXPORT_COMPLIE_COMMANDS ON)
+set(SENSOR_BRIDGE_PACKAGE_NAME ${PROJECT_NAME})
+
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(sensor_msgs)
+find_package(tf2)
+find_package(tf2_ros)
 
 set(DEPENDS 
   rclcpp
@@ -23,12 +45,12 @@ add_library(2d_lidar_sdk SHARED
   ${CMAKE_CURRENT_SOURCE_DIR}/sdk/src/CTime.cpp
 )
 
-add_executable(2d_lidar_driver 
+add_executable(old_lidar_driver 
   ${CMAKE_CURRENT_SOURCE_DIR}/2d_lidar_driver.cpp
 )
 
 set(PROJECT_TARGETS 
-  2d_lidar_driver 
+  old_lidar_driver 
 )
 
 foreach(target ${PROJECT_TARGETS})
@@ -37,12 +59,14 @@ foreach(target ${PROJECT_TARGETS})
   )
 endforeach()
 
-target_link_libraries(2d_lidar_driver 2d_lidar_sdk)
+target_link_libraries(old_lidar_driver 2d_lidar_sdk)
 
 install(TARGETS 
   2d_lidar_sdk
   LIBRARY DESTINATION lib)
 
 install(TARGETS 
-  2d_lidar_driver
+  old_lidar_driver
   DESTINATION lib/${SENSOR_BRIDGE_PACKAGE_NAME})
+
+ament_package()

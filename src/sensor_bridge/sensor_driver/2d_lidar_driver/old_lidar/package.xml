@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>sensor_bridge</name>
+  <name>old_lidar_driver</name>
   <version>0.0.0</version>
-  <description>Sensor_Bridge</description>
+  <description>old_lidar_driver</description>
   <maintainer email="kurihara.mio1026@gmail.com">mio</maintainer>
   <license>MIT</license>
 
