@@ -27,6 +27,10 @@ find_package(pluginlib REQUIRED)
 find_package(rclpy REQUIRED)
 find_package(pcl_conversions REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(Eigen3 REQUIRED)
+find_package(tf2_eigen REQUIRED)
 #find_package(PCL REQUIRED COMPONENTS common io)											   
 
 include_directories(
@@ -41,12 +45,15 @@ add_executable(lslidar_driver_node src/lslidar_driver_node.cc src/lslidar_driver
 target_link_libraries(lslidar_driver_node ${rclcpp_LIBRARIES} ${libpcap_LIBRARIES} ${Boost_LIBRARIES} Boost::thread)
 ament_target_dependencies(lslidar_driver_node rclcpp std_msgs lslidar_msgs sensor_msgs diagnostic_updater pcl_conversions)
 
+add_executable(lslidar_combine_node src/combine.cpp)
+ament_target_dependencies(lslidar_combine_node rclcpp sensor_msgs PCL pcl_conversions tf2_ros tf2 Eigen3 tf2_eigen)
 
 install(DIRECTORY launch params rviz
 		DESTINATION share/${PROJECT_NAME})
 
 install(TARGETS
   lslidar_driver_node
+  lslidar_combine_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
