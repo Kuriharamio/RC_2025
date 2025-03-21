@@ -56,7 +56,7 @@ public:
             "scan_left", 10, 
             std::bind(&CombineLslidar::scan_info_callback, this, std::placeholders::_1));
 
-        combined_pub_ = this->create_publisher<sensor_msgs::msg::LaserScan>("scan_combined", 10);
+        combined_pub_ = this->create_publisher<sensor_msgs::msg::LaserScan>("scan", 10);
         
         combined_scan_ = std::make_shared<sensor_msgs::msg::LaserScan>();
         combined_scan_->header.frame_id = "base_link";
