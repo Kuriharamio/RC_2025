@@ -5,7 +5,7 @@ options = {
   map_builder = MAP_BUILDER,
   trajectory_builder = TRAJECTORY_BUILDER,
   map_frame = "map",
-  tracking_frame = "base_link",
+  tracking_frame = "laser_link_left",
   -- base_link改为odom,发布map到odom之间的位姿态
   published_frame = "base_link",
   odom_frame = "odom",
@@ -40,9 +40,9 @@ options = {
 MAP_BUILDER.use_trajectory_builder_2d = true
 
 -- 0改成0.10,比机器人半径小的都忽略
-TRAJECTORY_BUILDER_2D.min_range = 0.10
+TRAJECTORY_BUILDER_2D.min_range = 0.50
 -- 30改成3.5,限制在雷达最大扫描范围内，越小一般越精确些
-TRAJECTORY_BUILDER_2D.max_range = 3.5
+TRAJECTORY_BUILDER_2D.max_range = 15.0
 -- 5改成3,传感器数据超出有效范围最大值
 TRAJECTORY_BUILDER_2D.missing_data_ray_length = 3.
 -- true改成false,不使用IMU数据，大家可以开启，然后对比下效果

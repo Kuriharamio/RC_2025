@@ -58,7 +58,7 @@ def generate_launch_description():
         'transform_tolerance': 0.01,
         'use_sim_time': False,
         'min_height': 0.0,
-        'max_height': 0.1,
+        'max_height': 20.0,
         # 'angle_min': -3.1415926,  # -M_PI
         # 'angle_max': 3.1415926,   # M_PI
         # 'angle_increment': 0.8, # 0.17度
