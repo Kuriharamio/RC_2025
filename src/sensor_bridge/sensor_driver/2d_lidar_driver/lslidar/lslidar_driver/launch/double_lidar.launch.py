@@ -21,7 +21,7 @@ def generate_launch_description():
         output='screen',
         arguments=[
             str(-0.36256 * np.sin(14.73 / 180.0 * np.pi)), str(0.36256 * np.cos(14.73 / 180.0 * np.pi)), '0.0',                           
-            str(3.1415926 / 2), '0.0', '0.0',                   
+            str(-3.1415926 / 2), str(3.1415926), '0.0',                   
             'base_link', 'laser_link_left'                    
         ]
     )
@@ -33,7 +33,7 @@ def generate_launch_description():
         output='screen',
         arguments=[
             str(-0.36256 * np.sin(14.73 / 180.0 * 3.1415926)), str(-0.36256 * np.cos(14.73 / 180.0 * 3.1415926)), '0.0',                           
-            str(-3.1415926 / 2), '0.0', '0.0',       
+            str(+3.1415926 / 2), str(3.1415926), '0.0',       
             'base_link', 'laser_link_right'                    
         ]
     )
@@ -62,12 +62,14 @@ def generate_launch_description():
                 name='lslidar_combine_node',
                 output='screen',
             )
+    
+
 
     return LaunchDescription([
         static_tf_left,
         static_tf_right,
         driver_node_left,
         driver_node_right,
-        combine_scan_node
+        combine_scan_node,
     ])
 

@@ -44,8 +44,42 @@ def generate_launch_description():
             arguments=['-d', rviz_config_dir],
             parameters=[{'use_sim_time': use_sim_time}],
             output='screen')
+    
+    # pointcloud2scan = Node(
+    #     package='pointcloud_to_laserscan',
+    #     executable='pointcloud_to_laserscan_node',
+    #     name='pointcloud_to_laserscan',
+    #     remappings=[('cloud_in', ['/points2']),
+    #                 ('scan', ['/scan'])],
+    #     parameters=[{'target_frame': 'base_link', 'transform_tolerance': 0.01}]
+    # )
+    params = {
+        'target_frame': 'base_link',  # 禁用以输出scan在pointcloud的frame中
+        'transform_tolerance': 0.01,
+        'use_sim_time': False,
+        'min_height': 0.0,
+        'max_height': 0.1,
+        # 'angle_min': -3.1415926,  # -M_PI
+        # 'angle_max': 3.1415926,   # M_PI
+        # 'angle_increment': 0.8, # 0.17度
+        # 'scan_time': 0.1,
+        # 'range_min': 0.2,
+        # 'range_max': 100,
+        # 'use_inf': True,
+        # 'concurrency_level': 1
+    }
+
+    # 创建节点
+    pointcloud_to_laserscan_node = Node(
+        package='pointcloud_to_laserscan',
+        executable='pointcloud_to_laserscan_node',
+        name='pointcloud_to_laserscan',
+        remappings=[('cloud_in', '/points2'),('scan', ['/scan'])],
+        parameters=[params]
+    )
 
     ld = LaunchDescription()
+    ld.add_action(pointcloud_to_laserscan_node)
     ld.add_action(cartographer_node)
     ld.add_action(cartographer_occupancy_grid_node)
     ld.add_action(rviz_node)
