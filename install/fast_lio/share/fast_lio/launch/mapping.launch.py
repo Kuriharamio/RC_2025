@@ -1,1 +1,0 @@
-/home/mio/FIles/ros/RC_2025/src/relocator/fast_lio2/launch/mapping.launch.py

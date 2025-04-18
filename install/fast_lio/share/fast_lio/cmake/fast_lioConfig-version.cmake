@@ -1,1 +1,0 @@
-/home/mio/FIles/ros/RC_2025/build/fast_lio/ament_cmake_core/fast_lioConfig-version.cmake

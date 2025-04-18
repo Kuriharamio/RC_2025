@@ -1,1 +1,0 @@
-/home/mio/FIles/ros/RC_2025/build/livox_ros_driver2/rosidl_generator_py/livox_ros_driver2/msg/__init__.py

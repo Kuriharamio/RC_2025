@@ -1,1 +1,0 @@
-/home/mio/FIles/ros/RC_2025/build/dll/ament_cmake_core/dllConfig-version.cmake
