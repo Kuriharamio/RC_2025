@@ -5,7 +5,7 @@ options = {
   map_builder = MAP_BUILDER,
   trajectory_builder = TRAJECTORY_BUILDER,
   map_frame = "map",
-  tracking_frame = "laser_link_left",
+  tracking_frame = "base_link",--laser_link_left--scan_left_laser_link
   -- base_link改为odom,发布map到odom之间的位姿态
   published_frame = "base_link",
   odom_frame = "odom",
