@@ -1,0 +1,17 @@
+/home/mio/FIles/ros/RC_2025/install/old_lidar_driver/lib/lib2d_lidar_sdk.so
+/home/mio/FIles/ros/RC_2025/install/old_lidar_driver/lib/old_lidar_driver/old_lidar_driver
+/home/mio/FIles/ros/RC_2025/install/old_lidar_driver/share/ament_index/resource_index/package_run_dependencies/old_lidar_driver
+/home/mio/FIles/ros/RC_2025/install/old_lidar_driver/share/ament_index/resource_index/parent_prefix_path/old_lidar_driver
+/home/mio/FIles/ros/RC_2025/install/old_lidar_driver/share/old_lidar_driver/environment/ament_prefix_path.sh
+/home/mio/FIles/ros/RC_2025/install/old_lidar_driver/share/old_lidar_driver/environment/ament_prefix_path.dsv
+/home/mio/FIles/ros/RC_2025/install/old_lidar_driver/share/old_lidar_driver/environment/path.sh
+/home/mio/FIles/ros/RC_2025/install/old_lidar_driver/share/old_lidar_driver/environment/path.dsv
+/home/mio/FIles/ros/RC_2025/install/old_lidar_driver/share/old_lidar_driver/local_setup.bash
+/home/mio/FIles/ros/RC_2025/install/old_lidar_driver/share/old_lidar_driver/local_setup.sh
+/home/mio/FIles/ros/RC_2025/install/old_lidar_driver/share/old_lidar_driver/local_setup.zsh
+/home/mio/FIles/ros/RC_2025/install/old_lidar_driver/share/old_lidar_driver/local_setup.dsv
+/home/mio/FIles/ros/RC_2025/install/old_lidar_driver/share/old_lidar_driver/package.dsv
+/home/mio/FIles/ros/RC_2025/install/old_lidar_driver/share/ament_index/resource_index/packages/old_lidar_driver
+/home/mio/FIles/ros/RC_2025/install/old_lidar_driver/share/old_lidar_driver/cmake/old_lidar_driverConfig.cmake
+/home/mio/FIles/ros/RC_2025/install/old_lidar_driver/share/old_lidar_driver/cmake/old_lidar_driverConfig-version.cmake
+/home/mio/FIles/ros/RC_2025/install/old_lidar_driver/share/old_lidar_driver/package.xml

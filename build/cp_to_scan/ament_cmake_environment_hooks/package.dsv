@@ -1,0 +1,4 @@
+source;share/cp_to_scan/local_setup.bash
+source;share/cp_to_scan/local_setup.dsv
+source;share/cp_to_scan/local_setup.sh
+source;share/cp_to_scan/local_setup.zsh

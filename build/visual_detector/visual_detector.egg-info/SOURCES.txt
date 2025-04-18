@@ -1,0 +1,14 @@
+package.xml
+setup.cfg
+setup.py
+resource/visual_detector
+visual_detector/__init__.py
+visual_detector/basket_detector.py
+visual_detector/tag_detector.py
+visual_detector.egg-info/PKG-INFO
+visual_detector.egg-info/SOURCES.txt
+visual_detector.egg-info/dependency_links.txt
+visual_detector.egg-info/entry_points.txt
+visual_detector.egg-info/requires.txt
+visual_detector.egg-info/top_level.txt
+visual_detector.egg-info/zip-safe

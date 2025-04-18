@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "cartographer_ros_msgs__py",
+		"source" : "/home/mio/FIles/ros/RC_2025/build/cartographer_ros_msgs/cartographer_ros_msgs__py"
+	}
+}

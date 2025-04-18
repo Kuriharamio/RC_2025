@@ -1,4 +1,8 @@
 .vscode/
-build/
-# install/
+build/dll
+build/fast_lio
+build/livox_ros_driver2
+install/dll
+install/fast_lio
+install/livox_ros_driver2
 log/

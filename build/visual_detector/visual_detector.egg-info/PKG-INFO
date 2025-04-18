@@ -1,0 +1,13 @@
+Metadata-Version: 2.2
+Name: visual_detector
+Version: 0.0.0
+Summary: TODO: Basket_detect and tag_detect package
+Maintainer: mio
+Maintainer-email: kurihara.mio1026@gmail.com
+License: MIT
+Requires-Dist: setuptools
+Dynamic: license
+Dynamic: maintainer
+Dynamic: maintainer-email
+Dynamic: requires-dist
+Dynamic: summary

@@ -1,0 +1,233 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-755181e09d7993096576.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				},
+				{
+					"build" : "cartographer_ros_msgs__py",
+					"jsonFile" : "directory-cartographer_ros_msgs__py-cb263051109500c159c0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/mio/FIles/ros/RC_2025/build/cartographer_ros_msgs/cartographer_ros_msgs__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "cartographer_ros_msgs",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_cartographer_ros_msgs_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_cartographer_ros_msgs_egg-8dce013ca57f4392cd21.json",
+					"name" : "ament_cmake_python_build_cartographer_ros_msgs_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_symlink_cartographer_ros_msgs::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_symlink_cartographer_ros_msgs-bd76c7b96494d9fd6628.json",
+					"name" : "ament_cmake_python_symlink_cartographer_ros_msgs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cartographer_ros_msgs::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cartographer_ros_msgs-ada0c924a08ba780aa8f.json",
+					"name" : "cartographer_ros_msgs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cartographer_ros_msgs__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cartographer_ros_msgs__cpp-9e745d996ae44c202f97.json",
+					"name" : "cartographer_ros_msgs__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "cartographer_ros_msgs__py::@5400b65ae5259b668574",
+					"jsonFile" : "target-cartographer_ros_msgs__py-35589e6be3c34c241a73.json",
+					"name" : "cartographer_ros_msgs__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cartographer_ros_msgs__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cartographer_ros_msgs__rosidl_generator_c-e0834b5db90e06963f79.json",
+					"name" : "cartographer_ros_msgs__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cartographer_ros_msgs__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cartographer_ros_msgs__rosidl_generator_py-3e71c2eb5064b0f0df97.json",
+					"name" : "cartographer_ros_msgs__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cartographer_ros_msgs__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cartographer_ros_msgs__rosidl_typesupport_c-304b20cee6d841c7fb5e.json",
+					"name" : "cartographer_ros_msgs__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cartographer_ros_msgs__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cartographer_ros_msgs__rosidl_typesupport_c__pyext-889d9eb9f1215931cebf.json",
+					"name" : "cartographer_ros_msgs__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cartographer_ros_msgs__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cartographer_ros_msgs__rosidl_typesupport_cpp-add3e91a9a081d139647.json",
+					"name" : "cartographer_ros_msgs__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cartographer_ros_msgs__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cartographer_ros_msgs__rosidl_typesupport_fastrtps_c-026d39c0695efa2eaccd.json",
+					"name" : "cartographer_ros_msgs__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cartographer_ros_msgs__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cartographer_ros_msgs__rosidl_typesupport_fastrtps_c__pyext-2edb9b8ce115b7484c3a.json",
+					"name" : "cartographer_ros_msgs__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cartographer_ros_msgs__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cartographer_ros_msgs__rosidl_typesupport_fastrtps_cpp-4d944dc93713359e520c.json",
+					"name" : "cartographer_ros_msgs__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cartographer_ros_msgs__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cartographer_ros_msgs__rosidl_typesupport_introspection_c-1f0d36196b8d53ae8000.json",
+					"name" : "cartographer_ros_msgs__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cartographer_ros_msgs__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cartographer_ros_msgs__rosidl_typesupport_introspection_c__pyext-1b01a5a91876d42a20ef.json",
+					"name" : "cartographer_ros_msgs__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cartographer_ros_msgs__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cartographer_ros_msgs__rosidl_typesupport_introspection_cpp-1b55e9b1b54d87a666de.json",
+					"name" : "cartographer_ros_msgs__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "cartographer_ros_msgs_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-cartographer_ros_msgs_uninstall-2d83c085473153068c1d.json",
+					"name" : "cartographer_ros_msgs_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-e08ac0c4835393694b6f.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/mio/FIles/ros/RC_2025/build/cartographer_ros_msgs",
+		"source" : "/home/mio/FIles/ros/RC_2025/src/relocator/cartographer/cartographer_ros/cartographer_ros_msgs"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

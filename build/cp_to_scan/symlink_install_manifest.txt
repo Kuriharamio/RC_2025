@@ -1,0 +1,17 @@
+/home/mio/FIles/ros/RC_2025/install/cp_to_scan/share/cp_to_scan/launch/cp_to_scan.launch.py
+/home/mio/FIles/ros/RC_2025/install/cp_to_scan/share/cp_to_scan/config/params.yaml
+/home/mio/FIles/ros/RC_2025/install/cp_to_scan/share/ament_index/resource_index/package_run_dependencies/cp_to_scan
+/home/mio/FIles/ros/RC_2025/install/cp_to_scan/share/ament_index/resource_index/parent_prefix_path/cp_to_scan
+/home/mio/FIles/ros/RC_2025/install/cp_to_scan/share/cp_to_scan/environment/ament_prefix_path.sh
+/home/mio/FIles/ros/RC_2025/install/cp_to_scan/share/cp_to_scan/environment/ament_prefix_path.dsv
+/home/mio/FIles/ros/RC_2025/install/cp_to_scan/share/cp_to_scan/environment/path.sh
+/home/mio/FIles/ros/RC_2025/install/cp_to_scan/share/cp_to_scan/environment/path.dsv
+/home/mio/FIles/ros/RC_2025/install/cp_to_scan/share/cp_to_scan/local_setup.bash
+/home/mio/FIles/ros/RC_2025/install/cp_to_scan/share/cp_to_scan/local_setup.sh
+/home/mio/FIles/ros/RC_2025/install/cp_to_scan/share/cp_to_scan/local_setup.zsh
+/home/mio/FIles/ros/RC_2025/install/cp_to_scan/share/cp_to_scan/local_setup.dsv
+/home/mio/FIles/ros/RC_2025/install/cp_to_scan/share/cp_to_scan/package.dsv
+/home/mio/FIles/ros/RC_2025/install/cp_to_scan/share/ament_index/resource_index/packages/cp_to_scan
+/home/mio/FIles/ros/RC_2025/install/cp_to_scan/share/cp_to_scan/cmake/cp_to_scanConfig.cmake
+/home/mio/FIles/ros/RC_2025/install/cp_to_scan/share/cp_to_scan/cmake/cp_to_scanConfig-version.cmake
+/home/mio/FIles/ros/RC_2025/install/cp_to_scan/share/cp_to_scan/package.xml
