@@ -1,0 +1,1 @@
+/home/mio/FIles/ros/RC_2025/build/interfaces/ament_cmake_core/interfacesConfig.cmake

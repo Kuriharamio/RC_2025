@@ -1,0 +1,1 @@
+/home/mio/FIles/ros/RC_2025/build/fast_lio/rosidl_generator_cpp/fast_lio/msg/pose6_d.hpp

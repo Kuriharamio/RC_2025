@@ -1,0 +1,1 @@
+/home/mio/FIles/ros/RC_2025/build/fast_lio/rosidl_typesupport_introspection_c/fast_lio/msg/detail/pose6_d__rosidl_typesupport_introspection_c.h

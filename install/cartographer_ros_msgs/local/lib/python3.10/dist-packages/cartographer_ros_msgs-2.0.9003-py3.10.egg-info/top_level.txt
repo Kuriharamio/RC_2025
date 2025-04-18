@@ -1,0 +1,1 @@
+/home/mio/FIles/ros/RC_2025/build/cartographer_ros_msgs/ament_cmake_python/cartographer_ros_msgs/cartographer_ros_msgs.egg-info/top_level.txt
