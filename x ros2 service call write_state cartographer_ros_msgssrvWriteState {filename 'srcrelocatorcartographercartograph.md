@@ -5,4 +5,4 @@ ros2 run nav2_map_server map_server --ros-args -p yaml_filename:=src/relocator/c
 
 ros2 run nav2_map_server map_saver_cli -t map -f src/relocator/cartographer/cartographer_config/map/map
 ```
-
+hello
