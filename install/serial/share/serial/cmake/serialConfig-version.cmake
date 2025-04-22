@@ -1,1 +1,0 @@
-/home/mio/FIles/ros/RC_2025/build/serial/ament_cmake_core/serialConfig-version.cmake

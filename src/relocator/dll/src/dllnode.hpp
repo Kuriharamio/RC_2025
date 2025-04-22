@@ -9,6 +9,8 @@
 #include <sensor_msgs/point_cloud2_iterator.hpp>
 #include <pcl_ros/transforms.hpp>
 #include <pcl/point_types.h>
+#include <pcl/common/time.h>
+#include <pcl/filters/statistical_outlier_removal.h> 
 #include <tf2_ros/transform_broadcaster.h>
 #include <tf2_ros/transform_listener.h>
 #include <geometry_msgs/msg/pose_with_covariance_stamped.hpp>
@@ -36,9 +38,9 @@ public:
 	DLLNode(const std::string &node_name) : rclcpp::Node(node_name)
 	{	
 		m_tfBr = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
-		m_tfBuffer = std::make_unique<tf2_ros::Buffer>(this->get_clock(), std::chrono::seconds(10));
+		m_tfBuffer = std::make_unique<tf2_ros::Buffer>(this->get_clock(), std::chrono::seconds(3));
 		m_tfListener = std::make_unique<tf2_ros::TransformListener>(*m_tfBuffer);
-		transform_pub_ = this->create_publisher<geometry_msgs::msg::TransformStamped>("pose_tf", 10);
+		transform_pub_ = this->create_publisher<geometry_msgs::msg::TransformStamped>("map_tf", 10);
 
 		// Read node parameters
 		this->declare_parameter("in_cloud","/pointcloud");
@@ -99,19 +101,19 @@ public:
 		m_solver->setMaxNumIterations(m_solverMaxIter);
 		m_solver->setMaxNumThreads(m_solverMaxThreads);
 
+		total_messages = 0;
+		useful_messages = 0;
 		// Launch subscribers
 		m_pcSub = this->create_subscription<sensor_msgs::msg::PointCloud2>(
             m_inCloudTopic, rclcpp::QoS(1).reliability(rclcpp::ReliabilityPolicy::BestEffort), std::bind(&DLLNode::pointcloudCallback, this, std::placeholders::_1));
         m_initialPoseSub = this->create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>(
-            "amcl_pose", rclcpp::QoS(2).reliability(rclcpp::ReliabilityPolicy::BestEffort), std::bind(&DLLNode::initialPoseReceived, this, std::placeholders::_1));
+            "initialpose", rclcpp::QoS(2).reliability(rclcpp::ReliabilityPolicy::BestEffort), std::bind(&DLLNode::initialPoseReceived, this, std::placeholders::_1));
 		m_initialPosePub = this->create_publisher<geometry_msgs::msg::PoseWithCovarianceStamped>(
             "initialpose", rclcpp::QoS(10).reliability(rclcpp::ReliabilityPolicy::Reliable));
         if (m_use_imu) {
             m_imuSub = this->create_subscription<sensor_msgs::msg::Imu>(
                 "imu",rclcpp::QoS(1).reliability(rclcpp::ReliabilityPolicy::BestEffort), std::bind(&DLLNode::imuCallback, this, std::placeholders::_1));
         }
-
-		
 
 		// Time stamp for periodic update
 		m_lastPeriodicUpdate = this->now();
@@ -272,7 +274,7 @@ private:
 		// Transform into the global frame
 		tf2::Transform pose;
 		tf2::fromMsg(msg->pose.pose, pose);
-		//ROS_INFO("Setting pose (%.6f): %.3f %.3f %.3f %.3f", ros::Time::now().toSec(), pose.getOrigin().x(), pose.getOrigin().y(), pose.getOrigin().z(), getYawFromTf(pose));
+		// ROS_INFO("Setting pose (%.6f): %.3f %.3f %.3f %.3f", ros::Time::now().toSec(), pose.getOrigin().x(), pose.getOrigin().y(), pose.getOrigin().z(), getYawFromTf(pose));
 		
 		// Initialize the filter
 		setInitialPose(pose);
@@ -300,9 +302,7 @@ private:
 	//! 3D point-cloud callback
 	void pointcloudCallback(const std::shared_ptr<const sensor_msgs::msg::PointCloud2>& cloud)
 	{	
-		static double lastYaw_imu = -1000.0;
-		double deltaYaw_imu = 0;
-		last_cloud_time=cloud->header.stamp;
+		
 		// If the filter is not initialized then exit
 		if(!m_init)
 			return;
@@ -311,17 +311,23 @@ private:
 		if(!m_doUpdate)
 			return;
 
+		total_messages++;
+		static double lastYaw_imu = -1000.0;
+		double deltaYaw_imu = 0;
+		last_cloud_time=cloud->header.stamp;
+		pcl::StopWatch time;
+
 		// Compute odometric translation and rotation since last update 
 		tf2::Stamped<tf2::Transform> odomTf;
 		try
 		{
-
 			m_tfBuffer->canTransform(m_odomFrameId, m_baseFrameId, last_cloud_time);//waitForTransform(m_odomFrameId, m_baseFrameId, rclcpp::Time(0), std::chrono::seconds(1));
 			tf2::fromMsg(m_tfBuffer->lookupTransform(m_odomFrameId, m_baseFrameId, last_cloud_time),odomTf);
 		}
 		catch (tf2::TransformException& ex)
 		{
 			RCLCPP_ERROR(this->get_logger(),"%s",ex.what());
+			// RCLCPP_ERROR(this->get_logger(),"Could not transform %s to %s in pointcloudCallback 1",m_odomFrameId.c_str(),m_baseFrameId.c_str());
 			return;
 		}
 		tf2::Transform mapTf;
@@ -342,13 +348,15 @@ private:
 				return;
 			}
 		}
+
 		sensor_msgs::msg::PointCloud2 baseCloud;
 		pcl_ros::transformPointCloud(m_baseFrameId, m_pclTf, *cloud, baseCloud);
-		
+
 		// PointCloud2 to PointXYZ conevrsion, with range limits [0,1000]
 		std::vector<pcl::PointXYZ> downCloud;
 		PointCloud2_to_PointXYZ(baseCloud, downCloud);
-			
+		
+		
 		// Get estimated position into the map
 		double tx, ty, tz;
 		tx = mapTf.getOrigin().getX();
@@ -410,15 +418,20 @@ private:
 		yaw = a;
 
 		tf2::Stamped<tf2::Transform> newOdomTf;
+		
 		try
 		{
-
-			m_tfBuffer->canTransform(m_odomFrameId, m_baseFrameId, rclcpp::Node::now());//waitForTransform(m_odomFrameId, m_baseFrameId, rclcpp::Time(0), std::chrono::seconds(1));
-			tf2::fromMsg(m_tfBuffer->lookupTransform(m_odomFrameId, m_baseFrameId, rclcpp::Node::now()),newOdomTf);
+			int64_t elapsed_time_ns = time.getTime();
+			std::chrono::nanoseconds elapsed_duration_ns(elapsed_time_ns);
+			rclcpp::Duration elapsed_duration(elapsed_duration_ns);
+			rclcpp::Time new_time = last_cloud_time + elapsed_duration;
+			m_tfBuffer->canTransform(m_odomFrameId, m_baseFrameId, new_time);//waitForTransform(m_odomFrameId, m_baseFrameId, rclcpp::Time(0), std::chrono::seconds(1));
+			tf2::fromMsg(m_tfBuffer->lookupTransform(m_odomFrameId, m_baseFrameId, new_time),newOdomTf);
 		}
 		catch (tf2::TransformException& ex)
 		{
 			RCLCPP_ERROR(this->get_logger(),"%s",ex.what());
+			RCLCPP_ERROR(this->get_logger(),"Could not transform %s to %s in pointcloudCallback 2",m_odomFrameId.c_str(),m_baseFrameId.c_str());
 			return;
 		}
 		
@@ -426,14 +439,13 @@ private:
 		tf2::Quaternion q;
 		q.setRPY(roll, pitch, yaw);
 		m_lastGlobalTf = tf2::Transform(q, tf2::Vector3(tx, ty, tz))*odomTf.inverse()*odomTf.inverse()*newOdomTf;
-
-
 		
-
 		// Update time and transform information
 		m_lastOdomTf = odomTf;
 		m_doUpdate = false;
-		// RCLCPP_INFO(this->get_logger(),"TF actualizado");
+		useful_messages++;
+		RCLCPP_INFO(this->get_logger(), "本次处理时长: %.2f s, 点云利用率: %.2f %%",time.getTime()/1000.0, 100*float(useful_messages)/float(total_messages));
+
 	}
 	
 	//! Set the initial pose of the particle filter
@@ -557,6 +569,9 @@ private:
 
 	//! Non-linear optimization solver
 	std::unique_ptr <DLLSolver> m_solver;
+
+	int total_messages;
+	int useful_messages;
 
 };
 namespace tf2{

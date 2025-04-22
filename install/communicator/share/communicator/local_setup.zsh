@@ -1,1 +1,0 @@
-/home/mio/FIles/ros/RC_2025/build/communicator/ament_cmake_environment_hooks/local_setup.zsh

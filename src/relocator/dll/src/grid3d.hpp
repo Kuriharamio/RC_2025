@@ -91,83 +91,6 @@ private:
 	
 public:
 
-	//Constructor with node
-	// Grid3d(rclcpp::Node *ros_node) : m_cloud(new pcl::PointCloud<pcl::PointXYZ>), m_triGrid(NULL)
-	// {
-	// 	// Load parameters
-	// 	double value;
-	// 	m_nodeName = node_name;
-	// 	ros_node->declare_parameter("global_frame_id","map");
-	// 	ros_node->declare_parameter("map_path","map.ot");
-	// 	ros_node->declare_parameter("publish_point_cloud",false);
-	// 	ros_node->declare_parameter("publish_point_cloud_rate",0.2);
-	// 	ros_node->declare_parameter("publish_grid_slice",-1.0);
-	// 
-
-	// 	ros_node->get_parameter("global_frame_id",m_globalFrameId);
-	// 	ros_node->get_parameter("map_path",m_mapPath);
-	// 	ros_node->get_parameter("publish_point_cloud",m_publishPc);
-	// 	ros_node->get_parameter("publish_point_cloud_rate",m_publishPointCloudRate);
-	// 	ros_node->get_parameter("publish_grid_slice",value);
-	// 	
-	// 	m_gridSlice = (float)value;
-		
-	// 	// Load octomap 
-	// 	m_octomap = NULL;
-	// 	m_grid = NULL;
-	// 	if(loadOctomap(m_mapPath))
-	// 	{
-	// 		// Compute the point-cloud associated to the ocotmap
-	// 		computePointCloud();
-			
-	// 		// Try to load tha associated grid-map from file
-	// 		std::string path;
-	// 		if(m_mapPath.compare(m_mapPath.length()-3, 3, ".bt") == 0)
-	// 			path = m_mapPath.substr(0,m_mapPath.find(".bt"))+".grid";
-	// 		if(m_mapPath.compare(m_mapPath.length()-3, 3, ".ot") == 0)
-	// 			path = m_mapPath.substr(0,m_mapPath.find(".ot"))+".grid";
-	// 		if(!loadGrid(path))
-	// 		{						
-	// 			// Compute the gridMap using kdtree search over the point-cloud
-	// 			std::cout << "Computing 3D occupancy grid. This will take some time..." << std::endl;
-	// 			computeGrid();
-	// 			std::cout << "\tdone!" << std::endl;
-				
-	// 			// Save grid on file
-	// 			if(saveGrid(path))
-	// 				std::cout << "Grid map successfully saved on " << path << std::endl;
-	// 		}
-			
-	// 		// Build the msg with a slice of the grid if needed
-	// 		if(m_gridSlice >= 0 && m_gridSlice <= m_maxZ)
-	// 		{
-	// 			buildGridSliceMsg(m_gridSlice);
-	// 			m_gridSlicePub = ros_node->create_publisher<nav_msgs::msg::OccupancyGrid>(node_name+"/grid_slice", 1, true);
-	// 			ros_node->create_wall_timer(rclcpp::Duration(1.0/m_publishGridSliceRate), &Grid3d::publishGridSliceTimer, this);	
-	// 		}
-			
-	// 		// Setup point-cloud publisher
-	// 		if(m_publishPc)
-	// 		{
-	// 			m_pcPub = ros_node->create_publisher<sensor_msgs::msg::PointCloud2>(node_name+"/map_point_cloud", 1, true);
-	// 			ros_node->create_wall_timer(rclcpp::Duration(1.0/m_publishPointCloudRate), &Grid3d::publishMapPointCloudTimer, this);
-	// 		}
-	// 	}
-
-	// 	// Setup ICP
-	// 	m_icp.setMaximumIterations (50);
-  	// 	m_icp.setMaxCorrespondenceDistance (0.1);
-  	// 	m_icp.setRANSACOutlierRejectionThreshold (1.0);
-
-	// 	// Setup NDT
-	// 	m_ndt.setTransformationEpsilon (0.01);  // Setting minimum transformation difference for termination condition.
-  	// 	m_ndt.setStepSize (0.1);   // Setting maximum step size for More-Thuente line search.
-  	// 	m_ndt.setResolution (1.0);   //Setting Resolution of NDT grid structure (VoxelGridCovariance).
-	// 	m_ndt.setMaximumIterations (50);   // Setting max number of registration iterations.
-	// }
-
-	// Constructor without node
-	// No longer used
 	Grid3d(const std::string &map_path) : m_cloud(new pcl::PointCloud<pcl::PointXYZ>), m_triGrid(NULL)
 	{
 	  
@@ -212,12 +135,12 @@ public:
 
 		std::shared_ptr<PointToPlane> point_to_plane(new PointToPlane);
 		icp.setTransformationEstimation(point_to_plane);
-		icp.setMaximumIterations(100);  // 最大迭代次数
+		icp.setMaximumIterations(500);  // 最大迭代次数
 		// icp.setTransformationEpsilon(1e-9);  // 变换矩阵变化量阈值
 		icp.setEuclideanFitnessEpsilon(1e-2);  // 对应点距离阈值
 		icp.setMaxCorrespondenceDistance(20.0);  // 最大对应点距离
-		// icp.setRANSACOutlierRejectionThreshold(0.2);
-		// icp.setRANSACIterations(100);
+		// icp.setRANSACOutlierRejectionThreshold(5.0);
+		// icp.setRANSACIterations(500);
 
 		// Setup NDT
 		m_ndt.setTransformationEpsilon (0.01);  // Setting minimum transformation difference for termination condition.
@@ -441,24 +364,13 @@ public:
 			source->points[i].z = p[i].z;
 		}
 
-		// // 2. 降采样（可选）
-		// pcl::VoxelGrid<pcl::PointXYZ> voxel_grid;
-		// voxel_grid.setInputCloud(source);
-		// voxel_grid.setLeafSize(0.01f, 0.01f, 0.01f);  // 设置体素大小
-		// voxel_grid.filter(*source);                   // 降采样后的点云
-
-		// 3. 设置初始变换
 		Eigen::AngleAxisf initRotation(a, Eigen::Vector3f::UnitZ());
 		Eigen::Translation3f initTranslation(tx, ty, tz);
 		Eigen::Matrix4f initGuess = (initTranslation * initRotation).matrix();
 
 		pcl::PointCloud<pcl::PointNormal>::Ptr sourceNormal = wf(source);
 
-
-		// 4. 设置 ICP 算法（使用点到面 ICP）
 		icp.setInputSource(sourceNormal);
-
-
 		pcl::PointCloud<pcl::PointNormal> Final;
 		auto start = std::chrono::high_resolution_clock::now();
 		icp.align(Final, initGuess);
@@ -468,17 +380,15 @@ public:
 
 		float score = icp.getFitnessScore();
 		std::cout << "Fitness Score: " << score << std::endl;
-		std::cout << "-----------------------------------------" << std::endl;
+		std::cout << "--------------------------------" << std::endl;
 
-		// 6. 检查是否收敛
-		if (!icp.hasConverged() || score > 2.0 )
+		if (!icp.hasConverged())
 		{
 			std::cerr << "ICP did not converge." << std::endl;
 			return false;
 		}
 
 
-		// 7. 获取最终变换结果
 		Eigen::Matrix4f T = icp.getFinalTransformation();
 		tx = T(0, 3);
 		ty = T(1, 3);
@@ -678,7 +588,7 @@ protected:
 		// Get map parameters
 		double minX(0), minY(0), minZ(0);
 		// m_octomap->getMetricMin(minX, minY, minZ);
-		
+		std::cout << minX << minY << minZ << std::endl;
 		// Load the octomap in PCL for easy nearest neighborhood computation
 		// The point-cloud is shifted to have (0,0,0) as min values
 		int i = 0;

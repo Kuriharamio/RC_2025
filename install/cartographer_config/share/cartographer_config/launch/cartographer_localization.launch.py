@@ -1,1 +1,0 @@
-/home/mio/FIles/ros/RC_2025/src/relocator/cartographer/cartographer_config/launch/cartographer_localization.launch.py

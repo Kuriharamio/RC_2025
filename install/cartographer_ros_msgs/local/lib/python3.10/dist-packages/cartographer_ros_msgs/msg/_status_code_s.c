@@ -1,1 +1,0 @@
-/home/mio/FIles/ros/RC_2025/build/cartographer_ros_msgs/rosidl_generator_py/cartographer_ros_msgs/msg/_status_code_s.c

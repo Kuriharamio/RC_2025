@@ -1,9 +1,0 @@
-/home/mio/FIles/ros/RC_2025/build/cp_to_scan/CMakeFiles/uninstall.dir
-/home/mio/FIles/ros/RC_2025/build/cp_to_scan/CMakeFiles/cp_to_scan_uninstall.dir
-/home/mio/FIles/ros/RC_2025/build/cp_to_scan/CMakeFiles/test.dir
-/home/mio/FIles/ros/RC_2025/build/cp_to_scan/CMakeFiles/edit_cache.dir
-/home/mio/FIles/ros/RC_2025/build/cp_to_scan/CMakeFiles/rebuild_cache.dir
-/home/mio/FIles/ros/RC_2025/build/cp_to_scan/CMakeFiles/list_install_components.dir
-/home/mio/FIles/ros/RC_2025/build/cp_to_scan/CMakeFiles/install.dir
-/home/mio/FIles/ros/RC_2025/build/cp_to_scan/CMakeFiles/install/local.dir
-/home/mio/FIles/ros/RC_2025/build/cp_to_scan/CMakeFiles/install/strip.dir

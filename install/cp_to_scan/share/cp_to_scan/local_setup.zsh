@@ -1,1 +1,0 @@
-/home/mio/FIles/ros/RC_2025/build/cp_to_scan/ament_cmake_environment_hooks/local_setup.zsh

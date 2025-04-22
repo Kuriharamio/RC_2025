@@ -1,1 +1,0 @@
-/home/mio/FIles/ros/RC_2025/build/lslidar_msgs/ament_cmake_core/lslidar_msgsConfig.cmake

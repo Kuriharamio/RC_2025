@@ -1,1 +1,0 @@
-/home/mio/FIles/ros/RC_2025/build/old_lidar_driver/ament_cmake_core/old_lidar_driverConfig.cmake

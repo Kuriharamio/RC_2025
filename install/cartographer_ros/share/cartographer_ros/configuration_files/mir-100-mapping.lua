@@ -1,1 +1,0 @@
-/home/mio/FIles/ros/RC_2025/src/relocator/cartographer/cartographer_ros/cartographer_ros/configuration_files/mir-100-mapping.lua

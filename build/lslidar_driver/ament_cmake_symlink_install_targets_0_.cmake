@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_targets("TARGET_FILES" "/home/mio/FIles/ros/RC_2025/build/lslidar_driver/lslidar_driver_node" "/home/mio/FIles/ros/RC_2025/build/lslidar_driver/lslidar_combine_node" "TARGETS" "lslidar_driver_node" "lslidar_combine_node" "DESTINATION" "lib/lslidar_driver")

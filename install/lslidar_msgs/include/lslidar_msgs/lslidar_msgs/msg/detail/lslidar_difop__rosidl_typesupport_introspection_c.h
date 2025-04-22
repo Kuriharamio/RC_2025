@@ -1,1 +1,0 @@
-/home/mio/FIles/ros/RC_2025/build/lslidar_msgs/rosidl_typesupport_introspection_c/lslidar_msgs/msg/detail/lslidar_difop__rosidl_typesupport_introspection_c.h

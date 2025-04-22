@@ -1,2 +1,0 @@
-[console_scripts]
-basket_detector = visual_detector.basket_detector:main

@@ -1,1 +1,0 @@
-/home/mio/FIles/ros/RC_2025/src/relocator/cartographer/cartographer_ros/cartographer_ros/launch/demo_backpack_3d.launch.py

@@ -1,1 +1,0 @@
-/home/mio/FIles/ros/RC_2025/src/sensor_bridge/sensor_driver/2d_lidar_driver/lslidar/lslidar_msgs/msg/LslidarPoint.msg

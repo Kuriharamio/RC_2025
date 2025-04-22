@@ -1,1 +1,0 @@
-/home/mio/FIles/ros/RC_2025/src/visual_detector/setup.py

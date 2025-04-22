@@ -1,1 +1,0 @@
-/home/mio/FIles/ros/RC_2025/build/lslidar_msgs/rosidl_typesupport_fastrtps_c/lslidar_msgs/msg/detail/lslidar_packet__rosidl_typesupport_fastrtps_c.h

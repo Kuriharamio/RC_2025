@@ -159,6 +159,7 @@ class DLLSolver
 
     bool solve(std::vector<pcl::PointXYZ> &p, double &tx, double &ty, double &tz, double &yaw)
     {
+        // pcl::StopWatch timer;
         // Initial solution
         double x[4];
         x[0] = tx; x[1] = ty; x[2] = tz; x[3] = yaw; 
@@ -196,7 +197,7 @@ class DLLSolver
 
         // Get the solution
         tx = x[0]; ty = x[1]; tz = x[2]; yaw = x[3];
-
+        // std::cout << "Duration: " << timer.getTime() << " ms" << std::endl;
         return true; 
     }
 };

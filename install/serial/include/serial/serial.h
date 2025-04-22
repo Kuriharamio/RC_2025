@@ -1,1 +1,0 @@
-/home/mio/FIles/ros/RC_2025/src/sensor_bridge/serial/include/serial/serial.h
